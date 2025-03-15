@@ -19,6 +19,30 @@
             <div>
                 <a href="{{ route('companies.create') }}" class="btn btn-success">Create Company</a>
             </div>
+            @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+            @endif
+
+            <table class="table table-bordered">
+                <tr>
+                    <th>No.</th>
+                    <th>Company Name</th>
+                    <th>Company Email</th>
+                    <th>Company Address</th>
+                    <th width="280px">Action</th>
+                </tr>
+                @foreach($companies as $company)
+                    <tr>
+                        <td>{{ $company->id }}</td>
+                        <td>{{ $company->name }}</td>
+                        <td>{{ $company->email }}</td>
+                        <td>{{ $company->address }}</td>
+                    </tr>
+                @endforeach
+            </table>
+
         </div>
     </div>
 
