@@ -35,4 +35,28 @@ class CompanyCRUDController extends Controller
         $company->save();
         return redirect()->route('companies.index')->with('success', 'company has been created successfully');
         }
+
+        public function edit(Company $company){
+            return view('companies.edit', compact('company'));
+        }
+
+        public function update(Request $request, $id){
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required',
+                'address' => 'required'
+            ]);
+        $company = Company::find($id);
+        $company->name = $request->name;
+        $company->email = $request->email;
+        $company->address = $request->address;
+        $company->save();
+        return redirect()->route('companies.index')->with('success', "Company has been updated successfully");
+        }
+
+        public function destroy(Company $company){
+            $company->delete();
+            return redirect()->route('companies.index')->with('success', 'Company has been deleted successfully');
+        }
+
 }
