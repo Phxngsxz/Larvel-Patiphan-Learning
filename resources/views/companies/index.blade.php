@@ -16,7 +16,7 @@
             <div class="col-lg-12 text-center">
                 <h2>Laravel 9 CRUD Example</h2>
             </div>
-            <div>
+            <div class="my-2">
                 <a href="{{ route('companies.create') }}" class="btn btn-success">Create Company</a>
             </div>
             @if ($message = Session::get('success'))
